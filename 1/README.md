@@ -1,14 +1,14 @@
 To compile a selected file write :
-cmake -S. -B<a directory name> -DDTYPE=float
+cmake -S. -B<a_directory_name> -DDTYPE=float
 
 or
 
 
-cmake -S. -B<a directory name> -DDTYPE=double
+cmake -S. -B<a_directory_name> -DDTYPE=double
 
 then
 
-cmake --build <a directory name>
+cmake --build <a_directory_name>
 
 Results:
 for float: -0.213894
