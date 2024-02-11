@@ -14,4 +14,5 @@ int main()
         s += arr[i];
     }
     std::cout << s << std::endl;
+    return 0;
 }   
