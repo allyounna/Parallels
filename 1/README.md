@@ -1,8 +1,13 @@
 To compile a selected file write :
 cmake -S. -B<a directory name> -DDTYPE=float
-"or"
+
+or
+
+
 cmake -S. -B<a directory name> -DDTYPE=double
-"then"
+
+then
+
 cmake --build <a directory name>
 
 Results:
