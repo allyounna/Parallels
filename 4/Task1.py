@@ -37,7 +37,7 @@ class SensorCam(Sensor):
         if cam == 'default':
             self.cap = cv2.VideoCapture(0)
         else:
-            self.cap = cv2.VideoCapture(cam)
+            self.cap = cv2.VideoCapture(int(cam))
         if not self.cap.isOpened():
             logging.error(f"Failed to open camera with name: {cam}")
             raise ValueError(f"Failed to open camera with name: {cam}")
@@ -63,11 +63,12 @@ class WindowImage:
 
     def show(self, img, s1, s2, s3):
         try:
-            x = img.shape[1] - 700
-            y = img.shape[0] - 50
+            x = int(img.shape[1]/5)
+            y = int(img.shape[0]/8)
             text = f"Sensor 1: {s1} Sensor 2: {s2} Sensor 3: {s3}"
             cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2)
             cv2.imshow("window", img)
+            time.sleep(1/self.freq)
         except Exception as e:
             logging.error(f"Error occurred while displaying frame: {e}")
 
@@ -136,6 +137,7 @@ def main(args):
         raise SystemExit("Program terminated due to error: ", str(e))
 
 if __name__ == '__main__':
+    cv2.destroyAllWindows()
     parser = argparse.ArgumentParser()
     parser.add_argument('--cam', type=str, default='default', help='Camera name')
     parser.add_argument('--res', type=str, default='900*900', help='Camera resolution')
